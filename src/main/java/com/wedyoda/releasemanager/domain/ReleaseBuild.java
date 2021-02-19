@@ -16,7 +16,7 @@ public class ReleaseBuild {
 
     @Override
     public String toString() {
-        return "ReleaseDependecy{" +
+        return "ReleaseBuild{" +
                 "releaseId=" + releaseId +
                 ", BuildNumber='" + BuildNumber + '\'' +
                 ", depedency=" + depedency +

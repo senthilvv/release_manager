@@ -37,8 +37,7 @@ public class Depedency {
         if (this == o) return true;
         if (!(o instanceof Depedency)) return false;
         Depedency depedency = (Depedency) o;
-        return Objects.equals(name, depedency.name) &&
-                dependecyType == depedency.dependecyType;
+        return Objects.equals(name, depedency.name);
     }
 
     @Override

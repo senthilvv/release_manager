@@ -28,6 +28,19 @@ public class ProjectManager {
 
     }
 
+    public  void AddProjectDependencies( Project project, Depedency depedency)
+    {
+
+        //project.addProjectDependencies(  );
+
+        ucm_project.addProjectDependencies(new Depedency("AZ-Service", Depedency.DependecyType.MICRO_SERVICE));
+        ucm_project.addProjectDependencies(new Depedency("UI-Service", Depedency.DependecyType.MICRO_SERVICE));
+        ucm_project.addProjectDependencies(new Depedency("CNR-Service", Depedency.DependecyType.MICRO_SERVICE));
+        ucm_project.addProjectDependencies(new Depedency("BL-Service", Depedency.DependecyType.MICRO_SERVICE));
+        ucm_project.addProjectDependencies(new Depedency("cnr-db-release", Depedency.DependecyType.DB_DEPLOYMNET));
+    }
+
+
 
 
 

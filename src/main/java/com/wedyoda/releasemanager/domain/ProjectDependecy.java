@@ -8,7 +8,7 @@ public class ProjectDependecy {
         this.ProjectId = projectId;
     }
    protected int ProjectId;
-   protected Depedency depedency;
+   public Depedency depedency;
 
 
     @Override
@@ -18,4 +18,5 @@ public class ProjectDependecy {
                 ", depedency=" + depedency +
                 '}';
     }
+
 }

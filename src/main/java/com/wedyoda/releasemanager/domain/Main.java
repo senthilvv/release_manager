@@ -1,5 +1,7 @@
 package com.wedyoda.releasemanager.domain;
 
+import java.util.Date;
+
 public class Main {
 
     public static void main(String[]  args){
@@ -8,13 +10,14 @@ public class Main {
 
 
       Project ucm_project  = pm.addUCMProject();
+
       //Now create the release object
 
 
 
         //Add dependecies added for the project
 
-       ucm_project.addProjectDependencies(new Depedency("AZ-Service", Depedency.DependecyType.MICRO_SERVICE));
+      ucm_project.addProjectDependencies(new Depedency("AZ-Service", Depedency.DependecyType.MICRO_SERVICE));
       ucm_project.addProjectDependencies(new Depedency("UI-Service", Depedency.DependecyType.MICRO_SERVICE));
       ucm_project.addProjectDependencies(new Depedency("CNR-Service", Depedency.DependecyType.MICRO_SERVICE));
       ucm_project.addProjectDependencies(new Depedency("BL-Service", Depedency.DependecyType.MICRO_SERVICE));
@@ -25,6 +28,7 @@ public class Main {
       release.Id = 1;
       release.name = "First release";
       release.version = "V.0.0.1";
+      release.releaseDate = new Date();
 
         //Create Release dependencies
         ReleaseBuild rc1 = new ReleaseBuild(ucm_project.ProjectId,"bld.001",new Depedency("AZ-Serivce", Depedency.DependecyType.MICRO_SERVICE));
