@@ -9,7 +9,10 @@ public class Project {
     public Project() {
 
         projectReleases = new ArrayList<Release>();
+        projectDependencies  = new ArrayList<ProjectDependecy>();
     }
+
+
 
 
     public int ProjectId;
@@ -18,6 +21,8 @@ public class Project {
     public Date StartDate;
     public Date endDate;
     public List<Release> projectReleases;
+    public List<ProjectDependecy> projectDependencies;
+
 
     //region Properties
 
@@ -44,6 +49,17 @@ public class Project {
     }
 
 
+    public void addProjectDependencies(Depedency depedency)
+    {
+        if(this.projectDependencies !=null)
+            this.projectDependencies.add(new ProjectDependecy(this.ProjectId,depedency));
+    }
+
+
+    public boolean validateDepenecy(Depedency depedency) {
+
+        return this.projectDependencies.contains(depedency);
+    }
 
 
     @Override
@@ -55,6 +71,9 @@ public class Project {
                 ", StartDate=" + StartDate +
                 ", endDate=" + endDate +
                 ", projectReleases=" + projectReleases +
+                ", projectDependencies=" + projectDependencies +
                 '}';
     }
+
+
 }

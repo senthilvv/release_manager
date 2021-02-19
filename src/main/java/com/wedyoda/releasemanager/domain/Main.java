@@ -1,30 +1,37 @@
 package com.wedyoda.releasemanager.domain;
 
-import java.util.Date;
-
 public class Main {
 
     public static void main(String[]  args){
 
       ProjectManager pm = new ProjectManager();
+
+
       Project ucm_project  = pm.addUCMProject();
       //Now create the release object
 
-        Release release = new Release();
-        release.name = "First release";
-        release.version = "V.0.0.1";
+
+
+        //Add dependecies added for the project
+
+       ucm_project.addProjectDependencies(new Depedency("AZ-Service", Depedency.DependecyType.MICRO_SERVICE));
+      ucm_project.addProjectDependencies(new Depedency("UI-Service", Depedency.DependecyType.MICRO_SERVICE));
+      ucm_project.addProjectDependencies(new Depedency("CNR-Service", Depedency.DependecyType.MICRO_SERVICE));
+      ucm_project.addProjectDependencies(new Depedency("BL-Service", Depedency.DependecyType.MICRO_SERVICE));
+      ucm_project.addProjectDependencies(new Depedency("cnr-db-release", Depedency.DependecyType.DB_DEPLOYMNET));
+
+
+      Release release = new Release(ucm_project);
+      release.Id = 1;
+      release.name = "First release";
+      release.version = "V.0.0.1";
 
         //Create Release dependencies
-        ReleaseDependecy rc1 = new ReleaseDependecy();
-        rc1.BuildNumber ="bld.001";
-        rc1.depedency = new Depedency("cnr-service", Depedency.DependecyType.MICRO_SERVICE);
-        release.addReleaseDependecy(rc1);
+        ReleaseBuild rc1 = new ReleaseBuild(ucm_project.ProjectId,"bld.001",new Depedency("AZ-Serivce", Depedency.DependecyType.MICRO_SERVICE));
+        ReleaseBuild rc2 = new ReleaseBuild(ucm_project.ProjectId,"bld.002",new Depedency("UI-Serivce", Depedency.DependecyType.MICRO_SERVICE));
 
-      ReleaseDependecy rc2 = new ReleaseDependecy();
-      rc2.BuildNumber ="bld.002";
-      rc2.depedency = new Depedency("other-service", Depedency.DependecyType.MICRO_SERVICE);
-      release.addReleaseDependecy(rc2);
-
+        release.addBuilds(rc1);
+        release.addBuilds(rc2);
 
         ucm_project.addProjectRelease(release);
 
